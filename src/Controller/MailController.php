@@ -11,7 +11,7 @@ class MailController extends Controller
 {
 
 
-    public function indexAction(){
+    public function index(){
         return new Response("Bienvenu sur l'api mailing traveled ! ");
     }
 
