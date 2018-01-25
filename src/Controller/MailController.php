@@ -7,7 +7,7 @@ use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+use Psr\Log\LoggerInterface;
 
 class MailController extends Controller
 {
@@ -17,10 +17,11 @@ class MailController extends Controller
         return new Response("Bienvenu sur l'api mailing traveled ! ");
     }
 
-    public function sendWelcomeMail(Request $request){
+    public function sendWelcomeMail(Request $request,LoggerInterface $logger){
+        $logger->info($request->get('to'));
         $response = new JsonResponse();
         $message = (new \Swift_Message("Bienvenu sur traveked"))
-                ->setFrom(array("Traveled"=>"travelednoreply@gmail.com"))
+                ->setFrom(array("travelednoreply@gmail.com"=>"travelednoreply@gmail.com"))
             ->setTo($request->get('to'))
             ->setBody(
                 $this->renderView(
