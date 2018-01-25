@@ -3,6 +3,8 @@
 namespace  App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Config\Definition\Exception\Exception;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -16,19 +18,24 @@ class MailController extends Controller
     }
 
     public function sendWelcomeMail(Request $request){
-
+        $response = new JsonResponse();
         $message = (new \Swift_Message("Bienvenu sur traveked"))
                 ->setFrom(array("Traveled"=>"travelednoreply@gmail.com"))
             ->setTo($request->get('to'))
             ->setBody(
                 $this->renderView(
-                // templates/emails/registration.html.twig
-                    'emails/registration.html.twig',
+                    'mail/welcome.html.twig',
                     array('link' => $request->get('link'))
                 ),
                 'text/html'
             );
-
-        $this->get('mailer')->send($message);
+        try {
+            $this->get('mailer')->send($message);
+        } catch (Exception $e){
+            $response->setStatusCode(500,"Impossible d'envoyer le mail");
+            return $response;
+        }
+        $response->setStatusCode(200,"Email sent successfully");
+        return $response;
     }
 }
