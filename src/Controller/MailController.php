@@ -20,13 +20,13 @@ class MailController extends Controller
     public function sendWelcomeMail(Request $request,LoggerInterface $logger){
         $logger->info($request->get('to'));
         $response = new JsonResponse();
-        $message = (new \Swift_Message("Bienvenu sur traveked"))
+        $message = (new \Swift_Message("Bienvenu sur traveled !"))
                 ->setFrom(array("travelednoreply@gmail.com"=>"travelednoreply@gmail.com"))
             ->setTo($request->get('to'))
             ->setBody(
                 $this->renderView(
                     'mail/welcome.html.twig',
-                    array('link' => $request->get('link'))
+                    array('password' => $request->get('password'), 'email'=>$request->get('to'))
                 ),
                 'text/html'
             );
