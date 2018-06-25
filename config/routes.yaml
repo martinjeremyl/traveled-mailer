@@ -3,7 +3,7 @@ index:
     defaults: { _controller: 'App\Controller\MailController::index' }
 
 mail_welcome:
-    path: /mail/welcome
+    path: /mail/welcome/{email}/{password}
     defaults: {_controller: 'App\Controller\MailController::sendWelcomeMail' }
 
 checkEmail:

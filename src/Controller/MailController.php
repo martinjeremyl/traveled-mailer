@@ -22,16 +22,15 @@ class MailController extends Controller
         return $response;
     }
 
-    public function sendWelcomeMail(Request $request){
-        $payload = json_decode($request->getContent());
-        $response = new JsonResponse();
+    public function sendWelcomeMail($email, $password){
+        $response = new Response();
         $message = (new \Swift_Message("Bienvenu sur traveled !"))
                 ->setFrom(array("travelednoreply@gmail.com"=>"travelednoreply@gmail.com"))
-            ->setTo($payload->to)
+            ->setTo($email)
             ->setBody(
                 $this->renderView(
                     'mail/loginMail.html.twig',
-                    array('login' => $payload->to)
+                    array('login' => $email)
                 ),
                 'text/html'
             );
@@ -43,11 +42,11 @@ class MailController extends Controller
         }
         $message = (new \Swift_Message("Voici votre mot de passe"))
             ->setFrom(array("travelednoreply@gmail.com"=>"travelednoreply@gmail.com"))
-            ->setTo($payload->to)
+            ->setTo($email)
             ->setBody(
                 $this->renderView(
                     'mail/passwordMail.html.twig',
-                    array('password' => $payload->password)
+                    array('password' => $password)
                 ),
                 'text/html'
             );
