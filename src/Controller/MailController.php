@@ -17,10 +17,7 @@ class MailController extends Controller
         return new Response("Bienvenue sur l'api mailing traveled ! ");
     }
 
-    public function sendWelcomeMail(Request $request,LoggerInterface $logger){
-
-        $logger->info($request->get('to'));
-        $logger->info($request->get('password'));
+    public function sendWelcomeMail(Request $request){
         $response = new JsonResponse();
         $message = (new \Swift_Message("Bienvenu sur traveled !"))
                 ->setFrom(array("travelednoreply@gmail.com"=>"travelednoreply@gmail.com"))
