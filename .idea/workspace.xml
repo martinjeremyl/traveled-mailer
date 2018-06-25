@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34ac0d3c-2028-458c-8879-a64c56f6ccae" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/Controller/MailController.php" afterPath="$PROJECT_DIR$/src/Controller/MailController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,8 +19,8 @@
       <file leaf-file-name="MailController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/MailController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="36" column="29" lean-forward="true" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
+            <state relative-caret-position="189">
+              <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
               <folding>
                 <element signature="e#35#92#0#PHP" expanded="true" />
               </folding>
@@ -372,12 +371,12 @@
       <workItem from="1516992476204" duration="9000" />
       <workItem from="1518621128661" duration="1410000" />
       <workItem from="1518686193610" duration="187000" />
-      <workItem from="1529911029487" duration="7479000" />
+      <workItem from="1529911029487" duration="7609000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19984000" />
+    <option name="totallyTimeSpent" value="20114000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -698,8 +697,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/MailController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="36" column="29" lean-forward="true" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
+        <state relative-caret-position="189">
+          <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
           <folding>
             <element signature="e#35#92#0#PHP" expanded="true" />
           </folding>

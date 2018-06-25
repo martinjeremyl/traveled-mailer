@@ -19,6 +19,7 @@ class MailController extends Controller
 
     public function sendWelcomeMail(Request $request){
         $payload = json_decode($request->getContent());
+        dump($payload);exit;
         $response = new JsonResponse();
         $message = (new \Swift_Message("Bienvenu sur traveled !"))
                 ->setFrom(array("travelednoreply@gmail.com"=>"travelednoreply@gmail.com"))
