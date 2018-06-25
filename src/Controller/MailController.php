@@ -14,29 +14,52 @@ class MailController extends Controller
 
 
     public function index(){
-        return new Response("Bienvenu sur l'api mailing traveled ! ");
+        return new Response("Bienvenue sur l'api mailing traveled ! ");
     }
 
     public function sendWelcomeMail(Request $request,LoggerInterface $logger){
+
         $logger->info($request->get('to'));
+        $logger->info($request->get('password'));
         $response = new JsonResponse();
         $message = (new \Swift_Message("Bienvenu sur traveled !"))
                 ->setFrom(array("travelednoreply@gmail.com"=>"travelednoreply@gmail.com"))
             ->setTo($request->get('to'))
             ->setBody(
                 $this->renderView(
-                    'mail/welcome.html.twig',
-                    array('password' => $request->get('password'), 'email'=>$request->get('to'))
+                    'mail/loginMail.html.twig',
+                    array('login' => $request->get('to'))
                 ),
                 'text/html'
             );
         try {
             $this->get('mailer')->send($message);
         } catch (Exception $e){
-            $response->setStatusCode(500,"Impossible d'envoyer le mail");
+            $response->setStatusCode(500,"Impossible d'envoyer le mail login");
             return $response;
         }
+        $message = (new \Swift_Message("Voici votre mot de passe"))
+            ->setFrom(array("travelednoreply@gmail.com"=>"travelednoreply@gmail.com"))
+            ->setTo($request->get('password'))
+            ->setBody(
+                $this->renderView(
+                    'mail/passwordMail.html.twig',
+                    array('login' => $request->get('to'))
+                ),
+                'text/html'
+            );
+        try {
+            $this->get('mailer')->send($message);
+        } catch (Exception $e){
+            $response->setStatusCode(500,"Impossible d'envoyer le mot de passe.");
+            return $response;
+        }
+
         $response->setStatusCode(200,"Email sent successfully");
         return $response;
+    }
+
+    public function checkEmailFrontAction () {
+        $this->renderView('mail/loginMail.html.twig');
     }
 }

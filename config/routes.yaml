@@ -5,3 +5,7 @@ index:
 mail_welcome:
     path: /mail/welcome
     defaults: {_controller: 'App\Controller\MailController::sendWelcomeMail' }
+
+checkEmail:
+    path: /mail/see
+    defaults: {_controller: 'App\Controller\MailController::checkEmailFront' }
