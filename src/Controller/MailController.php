@@ -56,7 +56,7 @@ class MailController extends Controller
         return $response;
     }
 
-    public function checkEmailFrontAction () {
+    public function checkEmailFront () {
         $this->renderView('mail/loginMail.html.twig');
     }
 }
