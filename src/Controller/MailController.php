@@ -37,7 +37,7 @@ class MailController extends Controller
         }
         $message = (new \Swift_Message("Voici votre mot de passe"))
             ->setFrom(array("travelednoreply@gmail.com"=>"travelednoreply@gmail.com"))
-            ->setTo($request->get('password'))
+            ->setTo($request->get('to'))
             ->setBody(
                 $this->renderView(
                     'mail/passwordMail.html.twig',
