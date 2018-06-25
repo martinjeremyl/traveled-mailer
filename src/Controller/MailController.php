@@ -14,13 +14,15 @@ class MailController extends Controller
 
 
     public function index(){
-        return new Response("Bienvenue sur l'api mailing traveled ! ");
+        $response = new JsonResponse();
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+        $response->headers->set('Access-Control-Allow-Methods', 'POST, GET');
+        $response->headers->set('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
+        $response->setData(array("Bienvenue sur le service mailing Traveled"));
+        return $response;
     }
 
     public function sendWelcomeMail(Request $request){
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
-        header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
         $payload = json_decode($request->getContent());
         $response = new JsonResponse();
         $message = (new \Swift_Message("Bienvenu sur traveled !"))
