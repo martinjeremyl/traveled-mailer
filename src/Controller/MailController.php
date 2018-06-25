@@ -18,6 +18,9 @@ class MailController extends Controller
     }
 
     public function sendWelcomeMail(Request $request){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+        header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
         $payload = json_decode($request->getContent());
         $response = new JsonResponse();
         $message = (new \Swift_Message("Bienvenu sur traveled !"))
