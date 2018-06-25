@@ -41,7 +41,7 @@ class MailController extends Controller
             ->setBody(
                 $this->renderView(
                     'mail/passwordMail.html.twig',
-                    array('login' => $request->get('to'))
+                    array('password' => $request->get('password'))
                 ),
                 'text/html'
             );
